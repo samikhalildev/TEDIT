@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextEditor
+namespace TEDIT
 {
-    class User
+    public class User
     {
         public string username { get; set; }
         public string password { get; set; }

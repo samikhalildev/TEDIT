@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextEditor.Model {
+namespace TEDIT {
 
-    class UserList { 
+    public class UserManager { 
 
         private List<User> users;
 
-        public UserList() {
+        public UserManager() {
             users = new List<User>();
         }
 
-        public User LookUpUser(string username, string password) {
+        public User FindUser(string username, string password) {
         
             foreach(User user in users) {
                 if(user.username.Equals(username) && user.password.Equals(password)) {
@@ -24,6 +24,15 @@ namespace TextEditor.Model {
             }
 
             return null;
+        }
+
+        public bool isUsernameTaken(string username) {
+            foreach(User user in users) {
+                if(user.username.Equals(username)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -43,7 +52,6 @@ namespace TextEditor.Model {
 
                     // While there is something to read in the file..
                     while((line = reader.ReadLine()) != null) {
-                        Console.WriteLine(line);
 
                         userTemp = new User();
                         userTemp.LoadUser(line);
@@ -65,22 +73,37 @@ namespace TextEditor.Model {
             }
         }
 
+        /* 1. This function takes user data as an array
+         * 2. It iterates over each data and adds a comma seperator
+         * 3. Once all data has been added to the "userLine" string, it gets passed to another function to save the data
+         */
+        public void AddNewUser(string[] userData) {
+            string userLine = "\r\n";
 
-        public void SaveNewUser(Enum userEnum) {
+            foreach(string field in userData) {
+                userLine += field + ",";
+            }
 
-            //string userLine = userEnum.username + "," + userEnum.password + "," +
-            AddToFile("userLine");
+            Console.WriteLine(userLine);
+            SaveUserToFile(userLine);
         }
+
 
         /* 1. Trys to open a file, otherwise throughs file not found exception
          * 2. Adds new user at the end of file
          * 3. Close stream
          */
-        public void AddToFile(string userLine) {
+        public void SaveUserToFile(string userLine) {
 
             try {
+                User userTemp;
+
                 using (StreamWriter writer = File.AppendText("login.txt")) {
                     writer.Write(userLine);
+
+                    userTemp = new User();
+                    userTemp.LoadUser(userLine);
+
                     writer.Close();
                 }
 

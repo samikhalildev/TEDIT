@@ -1,4 +1,4 @@
-﻿namespace TextEditor
+﻿namespace TEDIT
 {
     partial class Login
     {
@@ -67,7 +67,7 @@
             this.button1.Location = new System.Drawing.Point(214, 218);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 33);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 4;
             this.button1.Text = "LOGIN";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.HandleLogin);
@@ -103,7 +103,7 @@
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(224, 26);
-            this.password.TabIndex = 5;
+            this.password.TabIndex = 2;
             this.password.UseSystemPasswordChar = true;
             this.password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -115,7 +115,7 @@
             this.button2.Location = new System.Drawing.Point(387, 218);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(51, 33);
-            this.button2.TabIndex = 6;
+            this.button2.TabIndex = 5;
             this.button2.Text = "EXIT";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.HandleExit);
@@ -128,7 +128,7 @@
             this.button3.Location = new System.Drawing.Point(12, 218);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(95, 33);
-            this.button3.TabIndex = 7;
+            this.button3.TabIndex = 3;
             this.button3.Text = "NEW USER";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.OpenRegisterWindow);

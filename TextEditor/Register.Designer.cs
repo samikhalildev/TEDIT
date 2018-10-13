@@ -1,4 +1,4 @@
-﻿namespace TextEditor
+﻿namespace TEDIT
 {
     partial class Register
     {
@@ -55,7 +55,7 @@
             this.button2.Location = new System.Drawing.Point(357, 373);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 33);
-            this.button2.TabIndex = 14;
+            this.button2.TabIndex = 9;
             this.button2.Text = "CANCEL";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.HandleCancel);
@@ -67,7 +67,7 @@
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(224, 26);
-            this.password.TabIndex = 13;
+            this.password.TabIndex = 4;
             this.password.UseSystemPasswordChar = true;
             this.password.Click += new System.EventHandler(this.PasswordTextBox);
             // 
@@ -101,18 +101,18 @@
             this.button1.Location = new System.Drawing.Point(184, 373);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 33);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 8;
             this.button1.Text = "SUBMIT";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.HandleRegister);
             // 
             // username
             // 
-            this.username.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.Location = new System.Drawing.Point(230, 171);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(224, 26);
-            this.username.TabIndex = 9;
+            this.username.TabIndex = 3;
             this.username.Click += new System.EventHandler(this.UsernameTextBox);
             // 
             // label1
@@ -133,7 +133,7 @@
             this.repasword.Name = "repasword";
             this.repasword.PasswordChar = '*';
             this.repasword.Size = new System.Drawing.Size(224, 26);
-            this.repasword.TabIndex = 16;
+            this.repasword.TabIndex = 5;
             this.repasword.UseSystemPasswordChar = true;
             this.repasword.Click += new System.EventHandler(this.RePasswordTextBox);
             // 
@@ -155,7 +155,7 @@
             this.firstname.Location = new System.Drawing.Point(209, 121);
             this.firstname.Name = "firstname";
             this.firstname.Size = new System.Drawing.Size(111, 26);
-            this.firstname.TabIndex = 18;
+            this.firstname.TabIndex = 1;
             this.firstname.Click += new System.EventHandler(this.FirstNameTextBox);
             // 
             // label5
@@ -175,7 +175,7 @@
             this.lastname.Location = new System.Drawing.Point(407, 121);
             this.lastname.Name = "lastname";
             this.lastname.Size = new System.Drawing.Size(111, 26);
-            this.lastname.TabIndex = 20;
+            this.lastname.TabIndex = 2;
             this.lastname.Click += new System.EventHandler(this.LastNameTextBox);
             // 
             // label6
@@ -205,7 +205,7 @@
             this.dob.Location = new System.Drawing.Point(230, 285);
             this.dob.Name = "dob";
             this.dob.Size = new System.Drawing.Size(192, 20);
-            this.dob.TabIndex = 22;
+            this.dob.TabIndex = 6;
             // 
             // label8
             // 
@@ -224,7 +224,7 @@
             this.usertype.Location = new System.Drawing.Point(230, 311);
             this.usertype.Name = "usertype";
             this.usertype.Size = new System.Drawing.Size(121, 21);
-            this.usertype.TabIndex = 24;
+            this.usertype.TabIndex = 7;
             // 
             // Register
             // 

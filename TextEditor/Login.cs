@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TextEditor.Model;
 
-namespace TextEditor
+namespace TEDIT
 {
     public partial class Login : Form
     {
-        public Login()
-        {
+        UserManager userManager;
+        User user;
+
+        public Login() {
             InitializeComponent();
+        }
+
+        public Login(UserManager userManager) {
+            InitializeComponent();
+            this.userManager = userManager;
         }
 
         private void UsernameLabel(object sender, EventArgs e)
@@ -40,28 +46,26 @@ namespace TextEditor
 
         private void HandleLogin(object sender, EventArgs e)
         {
-            UserList userTemp = new UserList();
-            User user = new User();
 
             // Get user data from the login form
             string _Username = username.Text;
             string _Password = password.Text;
 
-            user = userTemp.LookUpUser(_Username, _Password);
-            Console.WriteLine(_Username);
-            Console.WriteLine(_Password);
+            if (string.IsNullOrWhiteSpace(_Username) || string.IsNullOrWhiteSpace(_Password)) {
+                MessageBox.Show("Username and password cannot be empty", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            user = userManager.FindUser(_Username, _Password);
 
             if (user != null) {
                 Console.WriteLine(user);
                 this.Hide();
 
             } else {
-                MessageBox.Show("Incorrect username or password.", "Login failed");
+                MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
-            
         }
 
         private void HandleExit(object sender, EventArgs e)
@@ -81,7 +85,7 @@ namespace TextEditor
 
         private void OpenRegisterWindow(object sender, EventArgs e)
         {
-            Register registerForm = new Register();
+            Register registerForm = new Register(userManager);
             registerForm.Show();
             this.Hide();
         }

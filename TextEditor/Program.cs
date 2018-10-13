@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TextEditor.Model;
 
-namespace TextEditor
+namespace TEDIT
 {
     static class Program
     {
@@ -15,16 +14,12 @@ namespace TextEditor
         [STAThread]
         static void Main()
         {
-            UserList user = new UserList();
-            string x = "\r\nsami96,123,View,sami,khalil,30-5-1996";
-
-            user.AddToFile(x);
-            user.LoadUsers();
-            //user.DisplayUsers();
+            UserManager userManager = new UserManager();
+            userManager.LoadUsers();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Login(userManager));
         }
     }
 }
