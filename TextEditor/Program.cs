@@ -15,10 +15,12 @@ namespace TEDIT
         static void Main()
         {
             UserManager.LoadUsers();
+            User user = UserManager.FindUser("sami96", "1234");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            //Application.Run(new Login());
+            Application.Run(new EditorWindow(user));
         }
     }
 }

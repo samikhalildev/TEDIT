@@ -7,13 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TextEditor;
 
 namespace TEDIT
 {
     public partial class Login : Form
     {
-        User user;
 
         public Login() {
             InitializeComponent();
@@ -41,7 +39,6 @@ namespace TEDIT
 
         private void HandleLogin(object sender, EventArgs e)
         {
-
             // Get user data from the login form
             string _Username = username.Text;
             string _Password = password.Text;
@@ -51,13 +48,14 @@ namespace TEDIT
                 return;
             }
 
-            user = UserManager.FindUser(_Username, _Password);
+            User user = UserManager.FindUser(_Username, _Password);
 
             if (user != null) {
                 Console.WriteLine("User found: " + user);
 
                 EditorWindow editorWindow = new EditorWindow(user);
-                this.Close();
+                editorWindow.Show();
+                this.Hide();
 
             } else {
                 MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
