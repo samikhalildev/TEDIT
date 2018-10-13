@@ -14,12 +14,11 @@ namespace TEDIT
         [STAThread]
         static void Main()
         {
-            UserManager userManager = new UserManager();
-            userManager.LoadUsers();
+            UserManager.LoadUsers();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login(userManager));
+            Application.Run(new Login());
         }
     }
 }

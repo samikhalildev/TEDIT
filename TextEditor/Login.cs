@@ -7,21 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TextEditor;
 
 namespace TEDIT
 {
     public partial class Login : Form
     {
-        UserManager userManager;
         User user;
 
         public Login() {
             InitializeComponent();
-        }
-
-        public Login(UserManager userManager) {
-            InitializeComponent();
-            this.userManager = userManager;
         }
 
         private void UsernameLabel(object sender, EventArgs e)
@@ -52,15 +47,17 @@ namespace TEDIT
             string _Password = password.Text;
 
             if (string.IsNullOrWhiteSpace(_Username) || string.IsNullOrWhiteSpace(_Password)) {
-                MessageBox.Show("Username and password cannot be empty", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username and password cannot be empty", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            user = userManager.FindUser(_Username, _Password);
+            user = UserManager.FindUser(_Username, _Password);
 
             if (user != null) {
-                Console.WriteLine(user);
-                this.Hide();
+                Console.WriteLine("User found: " + user);
+
+                EditorWindow editorWindow = new EditorWindow(user);
+                this.Close();
 
             } else {
                 MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -85,7 +82,7 @@ namespace TEDIT
 
         private void OpenRegisterWindow(object sender, EventArgs e)
         {
-            Register registerForm = new Register(userManager);
+            Register registerForm = new Register();
             registerForm.Show();
             this.Hide();
         }

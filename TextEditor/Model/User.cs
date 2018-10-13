@@ -10,10 +10,10 @@ namespace TEDIT
     {
         public string username { get; set; }
         public string password { get; set; }
-        string userType { get; set; }
-        string firstName { get; set; }
-        string lastName { get; set; }
-        string DOB { get; set; }
+        public string userType { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string DOB { get; set; }
 
         public User()
         {
@@ -36,21 +36,9 @@ namespace TEDIT
             DOB = fields[5];
         }
 
-        public void SaveUser(string line)
-        {
-            string[] fields = line.Split(',');
-
-            username = fields[0];
-            password = fields[1];
-            userType = fields[2];
-            firstName = fields[3];
-            lastName = fields[4];
-            DOB = fields[5];
-        }
-
         public override string ToString()
         {
-            return "First Name: " + firstName + " Last Name: " + lastName;
+            return "Username: " + username + " Password: " + password;
          }
     }
 }

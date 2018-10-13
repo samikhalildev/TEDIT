@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace TEDIT {
 
-    public class UserManager { 
+    public static class UserManager {
 
-        private List<User> users;
+        private static List<User> users = new List<User>();
 
-        public UserManager() {
-            users = new List<User>();
-        }
-
-        public User FindUser(string username, string password) {
+        public static User FindUser(string username, string password) {
         
             foreach(User user in users) {
                 if(user.username.Equals(username) && user.password.Equals(password)) {
@@ -26,7 +22,7 @@ namespace TEDIT {
             return null;
         }
 
-        public bool isUsernameTaken(string username) {
+        public static bool isUsernameTaken(string username) {
             foreach(User user in users) {
                 if(user.username.Equals(username)) {
                     return true;
@@ -41,7 +37,7 @@ namespace TEDIT {
          * 3. Create a new User instance and call the LoadUser method with the line as a parameter
          * 4. After the user has been created and all properties has been assigned, the instance then gets added to the list
          */
-        public void LoadUsers() {
+        public static void LoadUsers() {
 
             try {
 
@@ -59,7 +55,7 @@ namespace TEDIT {
                         users.Add(userTemp);
                     }
 
-                    //reader.Close();
+                    reader.Close();
                 }
 
             } catch(FileNotFoundException ex) {
@@ -67,7 +63,7 @@ namespace TEDIT {
             } 
         }
 
-        public void DisplayUsers() {
+        public static void DisplayUsers() {
             foreach(User user in users) {
                 Console.WriteLine(user);
             }
@@ -75,34 +71,48 @@ namespace TEDIT {
 
         /* 1. This function takes user data as an array
          * 2. It iterates over each data and adds a comma seperator
-         * 3. Once all data has been added to the "userLine" string, it gets passed to another function to save the data
+         * 3. Once all data has been added to the "userLine" string, it gets passed to another function
          */
-        public void AddNewUser(string[] userData) {
+        public static void AddNewUser(string[] userData) {
+
+            int len = userData.Length;
             string userLine = "\r\n";
 
-            foreach(string field in userData) {
-                userLine += field + ",";
+            for(int i = 0; i < len; i++) {
+
+                // Don't add a comma seperator on the last field.
+                if(i == len-1) {
+                    userLine += userData[i];
+                    break;
+                }
+
+                userLine += userData[i] + ",";
             }
 
-            Console.WriteLine(userLine);
+            //Console.WriteLine(userLine);
             SaveUserToFile(userLine);
         }
 
 
-        /* 1. Trys to open a file, otherwise throughs file not found exception
+        /* 1. This function will try to open a file, otherwise through file not found exception
          * 2. Adds new user at the end of file
          * 3. Close stream
          */
-        public void SaveUserToFile(string userLine) {
+        public static void SaveUserToFile(string userLine) {
 
             try {
                 User userTemp;
 
                 using (StreamWriter writer = File.AppendText("login.txt")) {
-                    writer.Write(userLine);
 
                     userTemp = new User();
-                    userTemp.LoadUser(userLine);
+
+                    // Remove line break before adding data to the user object
+                    string userData = userLine.Substring(2);
+                    Console.WriteLine("remvoed line breaks " + userData);
+
+                    userTemp.LoadUser(userData);
+                    users.Add(userTemp);
 
                     writer.Close();
                 }
