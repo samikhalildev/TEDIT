@@ -32,7 +32,6 @@
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -60,6 +59,7 @@
             this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -72,9 +72,9 @@
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Consolas", 11F);
             this.richTextBox1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.richTextBox1.Location = new System.Drawing.Point(27, 49);
+            this.richTextBox1.Location = new System.Drawing.Point(27, 52);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(598, 408);
+            this.richTextBox1.Size = new System.Drawing.Size(656, 570);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "Today was a good day.";
             this.richTextBox1.Click += new System.EventHandler(this.richTextBox1_Click);
@@ -89,7 +89,7 @@
             this.helpToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(625, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(683, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -135,7 +135,7 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(141, 6);
             // 
             // helpToolStripMenuItem1
             // 
@@ -145,13 +145,6 @@
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem1.Text = "&Help";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Image = global::TextEditor.Properties.Resources.Very_Basic_About_icon;
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem1.Text = "&About...";
             // 
             // toolStrip1
             // 
@@ -171,7 +164,7 @@
             this.usernameToolStripLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(625, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(683, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -210,7 +203,7 @@
             this.toolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStrip2.Location = new System.Drawing.Point(0, 49);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(24, 408);
+            this.toolStrip2.Size = new System.Drawing.Size(24, 573);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -300,6 +293,7 @@
             // 
             // italicToolStripButton
             // 
+            this.italicToolStripButton.CheckOnClick = true;
             this.italicToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.italicToolStripButton.Image = global::TextEditor.Properties.Resources.Italic_512;
             this.italicToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -311,6 +305,7 @@
             // 
             // underlineToolStripButton
             // 
+            this.underlineToolStripButton.CheckOnClick = true;
             this.underlineToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.underlineToolStripButton.Image = global::TextEditor.Properties.Resources.edit_underline_512;
             this.underlineToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -327,6 +322,7 @@
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
+            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
             // newToolStripMenuItem1
             // 
@@ -383,7 +379,7 @@
             this.undoToolStripMenuItem.Image = global::TextEditor.Properties.Resources.Icons8_Windows_8_Arrows_Undo;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.undoToolStripMenuItem.Text = "&Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -393,7 +389,7 @@
             this.redoToolStripMenuItem.Image = global::TextEditor.Properties.Resources._1523;
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.redoToolStripMenuItem.Text = "&Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
@@ -403,7 +399,7 @@
             this.cutToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
             this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.cutToolStripMenuItem1.Text = "Cu&t";
             this.cutToolStripMenuItem1.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
             // 
@@ -413,7 +409,7 @@
             this.copyToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.copyToolStripMenuItem1.Text = "&Copy";
             this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
             // 
@@ -423,20 +419,31 @@
             this.pasteToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
             this.pasteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.pasteToolStripMenuItem1.Text = "&Paste";
             this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Image = global::TextEditor.Properties.Resources.Very_Basic_About_icon;
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem1.Text = "&About...";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // EditorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 457);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(683, 622);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "EditorWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditorWindow";

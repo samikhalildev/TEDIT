@@ -110,9 +110,10 @@ namespace TEDIT {
                     // Remove line breaks before adding data to the user object and to the data structure
                     string userData = userLine.Substring(2);
 
+                    writer.Write(userLine);
+
                     userTemp.LoadUser(userData);
                     users.Add(userTemp);
-
                     writer.Close();
                 }
 

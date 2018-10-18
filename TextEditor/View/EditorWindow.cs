@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TextEditor.View;
 
 namespace TEDIT {
 
@@ -8,6 +9,7 @@ namespace TEDIT {
 
         User user;
         string filename;
+        bool typeOfUser;
 
         Object[] fontSizes = new Object[15];
         private static int defaultFontIndex = 3;
@@ -25,20 +27,20 @@ namespace TEDIT {
             // Show the username of the user to the label in the tool bar
             usernameToolStripLabel.Text += user.username;
             usernameToolStripLabel.ToolTipText = user.username;
-            GenerateFontSizes();
 
+            GenerateFontSizes();
+            AddUserData();
         }
 
         /* Disable and enable text reading mode depending on the user type */
         private void CheckUserType() {
-            if (user.userType.Equals("View")) {
-                richTextBox1.ReadOnly = true;
-
-            } else {
-                richTextBox1.ReadOnly = false;
-            }
+            typeOfUser = user.readOnly;
+            richTextBox1.ReadOnly = typeOfUser;
         }
 
+        /* This function gets called once when the editor is loaded
+         * It sets font sizes from 8 to 22 so the user can choosen from.
+         */
         private void GenerateFontSizes() {
 
             int size = 8;
@@ -50,6 +52,26 @@ namespace TEDIT {
 
             toolStripComboBox1.Items.AddRange(fontSizes);
             toolStripComboBox1.SelectedIndex = defaultFontIndex;
+        }
+
+        // Show user data in a JSON format
+        void AddUserData() {
+            string note = "NOTE: ";
+
+            if (typeOfUser)
+                note += "You are not able to edit/write on any document.";
+            else
+                note += "You are able to view and edit any document.";
+
+            richTextBox1.Text =
+                "User {\n\t" +
+                    "Username: " + user.username + "\n\t" +
+                    "Password: " + user.password + "\n\t" +
+                    "UserType: " + user.userType + "\n\t" +
+                    "FirstName: " + user.firstName + "\n\t" +
+                    "LastName: " + user.lastName + "\n\t" +
+                    "DOB: " + user.DOB + "\n" +
+                "}" + "\n\n" + note;
         }
 
 
@@ -96,7 +118,9 @@ namespace TEDIT {
         private void NewFile() {
             richTextBox1.Clear();
             filename = "";
+
             toolStripComboBox1.SelectedIndex = defaultFontIndex;
+            resetStyleButtons();
         }
 
         private void OpenFile() {
@@ -114,7 +138,7 @@ namespace TEDIT {
             if (fileResult == DialogResult.OK) {
 
                 // Get the file path
-                string filename = openFileDialog.FileName;
+                filename = openFileDialog.FileName;
                 Console.WriteLine(filename);
 
                 // load the content of the file
@@ -127,7 +151,7 @@ namespace TEDIT {
          */
         private void SaveFile() {
 
-            if (filename != null) {
+            if (filename != null && filename != "") {
                 richTextBox1.SaveFile(filename, RichTextBoxStreamType.PlainText);
 
             } else {
@@ -150,7 +174,6 @@ namespace TEDIT {
 
                 // Get the file path
                 filename = saveFile.FileName;
-                MessageBox.Show(filename);
 
                 // save the file as a RTF file format
                 richTextBox1.SaveFile(filename, RichTextBoxStreamType.PlainText);
@@ -159,82 +182,73 @@ namespace TEDIT {
 
 
         private void boldToolStripButton_Click(object sender, EventArgs e) {
+            if (typeOfUser)
+                return;
+
             ToggleBold();
         }
 
         private void italicToolStripButton_Click(object sender, EventArgs e) {
+            if (typeOfUser)
+                return;
+
             ToggleItalic();
         }
 
         private void underlineToolStripButton_Click(object sender, EventArgs e) {
+            if (typeOfUser)
+                return;
+
             ToggleUnderline();
         }
 
 
+        // Set font to bold
         private void ToggleBold() {
 
-            System.Drawing.Font currentFont = richTextBox1.SelectionFont;
-            System.Drawing.FontStyle newFontStyle = FontStyle.Regular;
+            Font new1, old1;
+            old1 = richTextBox1.SelectionFont;
 
-            if (boldToolStripButton.Checked) {
+            if (old1.Bold)
+                new1 = new Font(old1, old1.Style & ~FontStyle.Bold);
+            else
+                new1 = new Font(old1, old1.Style | FontStyle.Bold);
 
-                if (!richTextBox1.SelectionFont.Bold)
-                    newFontStyle = FontStyle.Bold;
-                else
-                    newFontStyle = FontStyle.Regular;
-            }
-
-            richTextBox1.SelectionFont = new Font(
-                currentFont.FontFamily,
-                currentFont.Size,
-                newFontStyle
-            );
+            richTextBox1.SelectionFont = new1;
+            richTextBox1.Focus();
         }
 
-
+        // Set font to Italic
         private void ToggleItalic() {
 
-            System.Drawing.Font currentFont = richTextBox1.SelectionFont;
-            System.Drawing.FontStyle newFontStyle = FontStyle.Regular;
+            Font new1, old1;
+            old1 = richTextBox1.SelectionFont;
 
-            if (boldToolStripButton.Checked) {
+            if (old1.Italic)
+                new1 = new Font(old1, old1.Style & ~FontStyle.Italic);
+            else
+                new1 = new Font(old1, old1.Style | FontStyle.Italic);
 
-                if (!richTextBox1.SelectionFont.Italic)
-                    newFontStyle = FontStyle.Italic;
-                else
-                    newFontStyle = FontStyle.Regular;
-            }
-
-            richTextBox1.SelectionFont = new Font(
-                currentFont.FontFamily,
-                currentFont.Size,
-                newFontStyle
-            );
+            richTextBox1.SelectionFont = new1;
+            richTextBox1.Focus();
         }
 
-
+        // Set font to Underline
         private void ToggleUnderline() {
 
-            System.Drawing.Font currentFont = richTextBox1.SelectionFont;
-            System.Drawing.FontStyle newFontStyle = FontStyle.Regular;
+            Font new1, old1;
+            old1 = richTextBox1.SelectionFont;
 
-            if (boldToolStripButton.Checked) {
+            if (old1.Underline)
+                new1 = new Font(old1, old1.Style & ~FontStyle.Underline);
+            else
+                new1 = new Font(old1, old1.Style | FontStyle.Underline);
 
-                if (!richTextBox1.SelectionFont.Underline)
-                    newFontStyle = FontStyle.Underline;
-                else
-                    newFontStyle = FontStyle.Regular;
-            }
-
-            richTextBox1.SelectionFont = new Font(
-                currentFont.FontFamily,
-                currentFont.Size,
-                newFontStyle
-            );
+            richTextBox1.SelectionFont = new1;
+            richTextBox1.Focus();
         }
 
-
-
+        // When the exit button is clicked, logout the user
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Login loginForm = new Login();
             loginForm.Show();
@@ -278,9 +292,15 @@ namespace TEDIT {
             richTextBox1.Paste();
         }
 
+        /* This function gets called when a user selects a font size
+         * The choosen font size gets applied to the selected text in the richtextbox
+         */
         private void FontSizeChanged(object sender, EventArgs e) {
+            if (typeOfUser)
+                return;
+
             int fontSize = (int)toolStripComboBox1.SelectedItem;
-            richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.Name, fontSize);
+            richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, fontSize, richTextBox1.SelectionFont.Style);
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e) {
@@ -294,21 +314,13 @@ namespace TEDIT {
         }
 
         private void richTextBox1_Click(object sender, EventArgs e) {
-
-            // get the size of the selected text
-            //int size = (int)richTextBox1.SelectionFont.Size;
-
-            toolStripComboBox1.SelectedIndex = defaultFontIndex;
+            resetStyleButtons();
         }
 
-        private int FindFontSizeIndex(object size) {
-            for (int i = 0; i < fontSizes.Length; i++) {
-                if (fontSizes[i] == size) {
-                    return i;
-                }
-            }
-
-            return -1;
+        private void resetStyleButtons() {
+            boldToolStripButton.Checked = false;
+            italicToolStripButton.Checked = false;
+            underlineToolStripButton.Checked = false;
         }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -323,5 +335,17 @@ namespace TEDIT {
             redoToolStripMenuItem.Enabled = false;
         }
 
+        private void helpToolStripButton_Click(object sender, EventArgs e) {
+            LoadAboutForm();
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e) {
+            LoadAboutForm();
+        }
+
+        private void LoadAboutForm() {
+            About aboutForm = new About();
+            aboutForm.Show();
+        }
     }
 }

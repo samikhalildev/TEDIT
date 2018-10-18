@@ -72,11 +72,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Brown;
-            this.label2.Location = new System.Drawing.Point(140, 25);
+            this.label2.Location = new System.Drawing.Point(197, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 33);
+            this.label2.Size = new System.Drawing.Size(216, 33);
             this.label2.TabIndex = 3;
-            this.label2.Text = "TEXT EDITOR - LOGIN";
+            this.label2.Text = "TEDIT - LOGIN";
             this.label2.Click += new System.EventHandler(this.LoginLabel);
             // 
             // label3

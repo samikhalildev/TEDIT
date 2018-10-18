@@ -14,16 +14,14 @@ namespace TEDIT
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string DOB { get; set; }
+        public bool readOnly { get; set; }
 
-        public User()
-        {
-
-        }
 
         /* 1. This method takes a line from a file and gets called from the UserList class
          * 2. Splits the line using the seperator ','
          * 3. Assigns each field respectfully
          */
+
         public void LoadUser(string line)
         {
             string[] fields = line.Split(',');
@@ -34,6 +32,15 @@ namespace TEDIT
             firstName = fields[3];
             lastName = fields[4];
             DOB = fields[5];
+
+            SetType();
+        }
+
+
+        private void SetType() {
+            if (userType.Equals("View")) {
+                readOnly = true;
+            }
         }
 
         public override string ToString()

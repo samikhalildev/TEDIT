@@ -87,11 +87,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Brown;
-            this.label2.Location = new System.Drawing.Point(122, 46);
+            this.label2.Location = new System.Drawing.Point(181, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(381, 33);
+            this.label2.Size = new System.Drawing.Size(273, 33);
             this.label2.TabIndex = 11;
-            this.label2.Text = "TEXT EDITOR - REGISTER";
+            this.label2.Text = "TEDIT - REGISTER";
             // 
             // button1
             // 

@@ -14,3 +14,4 @@ royy1,rRRRR,View,Romero,Roland,07-11-1982
 Suchi,subdotCom,Edit,subway,HJ,21-12-1988
 jimy1,asdasd,View,Jim,MacDonald,14-09-1970
 sami96,1234,Edit,Sami,Khalil,30-05-1996
+kristapony,1234,View,krista,khalil,18-10-2018

@@ -19,8 +19,7 @@ namespace TEDIT
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
-            Application.Run(new EditorWindow(user));
+            Application.Run(new Login());
         }
     }
 }

@@ -1,4 +1,3 @@
-C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TEDIT.csprojResolveAssemblyReference.cache
 C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TEDIT.Login.resources
 C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TextEditor.Properties.Resources.resources
 C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TEDIT.Register.resources
@@ -9,3 +8,5 @@ C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\bin\De
 C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\bin\Debug\TextEditor.exe
 C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\bin\Debug\TextEditor.pdb
 C:\Users\sami\documents\visual studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TEDIT.EditorWindow.resources
+C:\Users\sami\Documents\Visual Studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TextEditor.View.About.resources
+C:\Users\sami\Documents\Visual Studio 2017\Projects\TextEditor\TextEditor\obj\Debug\TEDIT.csprojResolveAssemblyReference.cache
